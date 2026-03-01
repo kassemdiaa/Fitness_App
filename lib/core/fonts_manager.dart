@@ -10,7 +10,7 @@ class FontsManager {
   static final TextStyle Entermail=GoogleFonts.montserratAlternates(
       fontSize: 13.sp,fontWeight: FontWeight.w400);
   static final TextStyle forgetbuttontext=GoogleFonts.montserratAlternates(
-      fontSize: 12.sp,fontWeight: FontWeight.w600);
+      fontSize: 12.sp,fontWeight: FontWeight.w600 );
   static final TextStyle Loginbuttonstyle=GoogleFonts.montserratAlternates(
       fontSize: 15.sp,fontWeight: FontWeight.w400);
   static final TextStyle Already= GoogleFonts.urbanist(
