@@ -2,8 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class ColorsManager{
+abstract class ColorsManager{
   static const Color Purple= Color(0xff262135); /////Scaffold DarkMode
+  static const Color lightPurple= Color(0xff494358);
   static const Color white= Colors.white;       ////Scaffold  LightMode
   static const Color Lemon= Color(0xffF5F3BC);
   static const Color Iceblue= Color(0xffD6EBEB);
@@ -12,4 +13,5 @@ class ColorsManager{
   static const Color red=Colors.red;
   static const Color green= Color(0xff089600);
   static const Color grey=Color(0xff545454);
+  static const Color black=Color(0xff000000);
 }
