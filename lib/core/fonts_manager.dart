@@ -1,10 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/src/painting/text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class FontsManager {
+class FontsStyles {
   static final TextStyle welcomeAuthtext=GoogleFonts.montserratAlternates(
       fontSize: 30.sp,fontWeight: FontWeight.bold);
   static final TextStyle Entermail=GoogleFonts.montserratAlternates(
@@ -37,5 +35,7 @@ class FontsManager {
   static final TextStyle hookNewsDetailes=GoogleFonts.montserrat(
       fontSize: 18.sp,fontWeight: FontWeight.w600
   );
-
+  static final TextStyle newsDetailes=GoogleFonts.montserrat(
+      fontSize: 12.sp,fontWeight: FontWeight.w600
+  );
 }
