@@ -19,7 +19,7 @@ class FitnessApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeManeger.light,
+        theme: ThemeManeger.dark,
         darkTheme: ThemeManeger.dark,
         themeMode: ThemeMode.dark,
         initialRoute: RoutesManager.splash,
