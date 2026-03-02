@@ -45,7 +45,9 @@ class _ForgetpassuiState extends State<Forgetpassui> {
                 color: ColorsManager.white.withOpacity(0.6)),
           ),
           SizedBox(height: 13.h,),
-          CustomElevatedButton(onPressed: (){},title: "SendCode",
+          CustomElevatedButton(onPressed: (){
+            Navigator.pushNamed(context, RoutesManager.passwordChanged);
+          },title: "SendCode",
               backgroundColor: ColorsManager.white,
               foregroundColor: ColorsManager.black
           ),

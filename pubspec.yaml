@@ -43,7 +43,7 @@ dependencies:
   bloc: ^9.2.0
   flutter_launcher_icons: ^0.14.4
   shared_preferences: ^2.5.4
-
+  lottie: ^3.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -53,6 +53,7 @@ flutter:
   assets:
     - assets/images/
     - assets/IconLuncher/
+    - assets/lottie/
 
 flutter_launcher_icons:
     android: true
