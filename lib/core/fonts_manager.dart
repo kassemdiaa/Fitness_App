@@ -20,9 +20,22 @@ class FontsManager {
   static final TextStyle onBourdingtexts=GoogleFonts.montserratAlternates(
       fontSize: 24.sp,fontWeight: FontWeight.w600);
   static final TextStyle ChoosesOnBourding=GoogleFonts.montserratAlternates(
-    fontSize: 12,fontWeight: FontWeight.w500
+    fontSize: 12.sp,fontWeight: FontWeight.w500
   );
   static final TextStyle HomeWelcome= GoogleFonts.montserrat(
-
+    fontWeight: FontWeight.bold,fontSize: 20.sp
   );
+  static final TextStyle ScheduleHome=GoogleFonts.montserrat(
+    fontSize: 11.sp,fontWeight: FontWeight.w400
+  );
+  static final TextStyle homeChoicesandDetailes=GoogleFonts.montserrat(
+    fontWeight: FontWeight.w300,fontSize: 10.sp
+  );
+  static final TextStyle AppBar=GoogleFonts.montserrat(
+    fontSize: 18.sp,fontWeight: FontWeight.w600
+  );
+  static final TextStyle hookNewsDetailes=GoogleFonts.montserrat(
+      fontSize: 18.sp,fontWeight: FontWeight.w600
+  );
+
 }
