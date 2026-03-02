@@ -1,17 +1,17 @@
 
-import 'package:fitness_app/features/auth/forget_password/forget_password_screen.dart';
-import 'package:fitness_app/features/auth/forget_password/password_changed_screen.dart';
-import 'package:fitness_app/features/auth/forget_password/reset_password_screen.dart';
-import 'package:fitness_app/features/auth/login/login_sucssesfully_screen.dart';
-import 'package:fitness_app/features/auth/login_or_register/login_or_register_screen.dart';
-import 'package:fitness_app/features/auth/register/register_screen.dart';
-import 'package:fitness_app/features/mainlayout/home/LayoutScreen.dart';
-import 'package:fitness_app/features/mainlayout/home/home_screen.dart';
-import 'package:fitness_app/features/mainlayout/profile/profile_screen.dart';
+import 'package:fitness_app/features/auth/ui/forget_password/forget_password_screen.dart';
+import 'package:fitness_app/features/auth/ui/forget_password/password_changed_screen.dart';
+import 'package:fitness_app/features/auth/ui/forget_password/reset_password_screen.dart';
+import 'package:fitness_app/features/auth/ui/login/login_screen.dart';
+import 'package:fitness_app/features/auth/ui/login/login_sucssesfully_screen.dart';
+import 'package:fitness_app/features/auth/ui/login_or_register/login_or_register_screen.dart';
+import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
+import 'package:fitness_app/features/mainlayout/mainlayout.dart';
+import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../features/auth/login/login_screen.dart';
+
 
 class RoutesManager {
   static const String onboardingScreen = '/onboarding';
@@ -47,7 +47,7 @@ class RoutesManager {
       case profileScreen:
         return CupertinoPageRoute(builder: (_) =>  ProfileScreen());
       case layoutScreen:
-        return CupertinoPageRoute(builder: (_) => Layoutscreen());
+        return CupertinoPageRoute(builder: (_) => Mainlayout());
       case homeScreen:
         return CupertinoPageRoute(builder: (_) =>  HomeScreen());
     }
