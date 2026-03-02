@@ -1,4 +1,3 @@
-
 import 'package:fitness_app/features/auth/ui/forget_password/forget_password_screen.dart';
 import 'package:fitness_app/features/auth/ui/forget_password/password_changed_screen.dart';
 import 'package:fitness_app/features/auth/ui/forget_password/reset_password_screen.dart';
@@ -9,47 +8,49 @@ import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
 import 'package:fitness_app/features/mainlayout/mainlayout.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
+import 'package:fitness_app/features/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
-
-
 
 class RoutesManager {
   static const String onboardingScreen = '/onboarding';
   static const String chooseAuth = '/choose';
   static const String loginScreen = '/login';
-  static const String loginScreenSucessfully = '/login';
-  static const String passwordChanged = '/login';
+  static const String loginScreenSucessfully = '/loginsucess';
+  static const String passwordChanged = '/passwordchanged';
   static const String resetpassword = '/resetPassword';
   static const String registerScreen = '/register';
   static const String forgetPass = '/forgetPass';
   static const String profileScreen = '/profile';
   static const String layoutScreen = '/layout';
   static const String homeScreen = '/home';
-  static const String favorites='/favourites';
-  static const String Article='/article';
+  static const String favorites = '/favourites';
+  static const String article = '/article';
+  static const String splash = '/splash';
   static Route<dynamic>? getRoute(RouteSettings settings) {
-    switch (settings.name)
-    {
+    switch (settings.name) {
+      case splash:
+        return CupertinoPageRoute(builder: (_) => Splash());
       case chooseAuth:
-        return CupertinoPageRoute(builder: (_)=> LoginOrRegisterScreen());
+        return CupertinoPageRoute(builder: (_) => LoginOrRegisterScreen());
       case forgetPass:
-        return CupertinoPageRoute(builder: (_)=> ForgetPasswordScreen());
-        case passwordChanged:
-        return CupertinoPageRoute(builder: (_)=> PasswordChangedScreen());
+        return CupertinoPageRoute(builder: (_) => ForgetPasswordScreen());
+      case passwordChanged:
+        return CupertinoPageRoute(builder: (_) => PasswordChangedScreen());
       case resetpassword:
-        return CupertinoPageRoute(builder: (_)=> ResetPasswordScreen());
+        return CupertinoPageRoute(builder: (_) => ResetPasswordScreen());
       case loginScreenSucessfully:
-        return CupertinoPageRoute(builder: (_)=> LoginSucssesfullyScreen());
+        return CupertinoPageRoute(builder: (_) => LoginSucssesfullyScreen());
       case loginScreen:
         return CupertinoPageRoute(builder: (_) => LoginScreen());
       case registerScreen:
-        return CupertinoPageRoute(builder: (_) =>  RegisterScreen());
+        return CupertinoPageRoute(builder: (_) => RegisterScreen());
       case profileScreen:
-        return CupertinoPageRoute(builder: (_) =>  ProfileScreen());
+        return CupertinoPageRoute(builder: (_) => ProfileScreen());
       case layoutScreen:
         return CupertinoPageRoute(builder: (_) => Mainlayout());
       case homeScreen:
-        return CupertinoPageRoute(builder: (_) =>  HomeScreen());
+        return CupertinoPageRoute(builder: (_) => HomeScreen());
     }
+    return null;
   }
 }

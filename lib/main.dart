@@ -1,4 +1,5 @@
 import 'package:fitness_app/config/theme/theme_maneger.dart';
+import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +22,8 @@ class FitnessApp extends StatelessWidget {
         theme: ThemeManeger.light,
         darkTheme: ThemeManeger.dark,
         themeMode: ThemeMode.dark,
+        initialRoute: RoutesManager.splash,
+        onGenerateRoute: RoutesManager.getRoute,
       ),
     );
   }
