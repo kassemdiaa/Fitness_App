@@ -16,7 +16,6 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    // wait for 5 seconds then navigate to login screen
     Timer(const Duration(seconds: 5), () {
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, RoutesManager.chooseAuth);

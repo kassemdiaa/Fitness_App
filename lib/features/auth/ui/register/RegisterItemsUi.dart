@@ -1,9 +1,10 @@
+import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/SharedWidgets/CustomTextFormField.dart';
-import '../../../../core/SharedWidgets/CustomeTextButton.dart';
+import '../widgets/CustomeTextButton.dart';
 import '../../../../core/colors_manager.dart';
 import '../../../../core/fonts_manager.dart';
 import '../../../../core/images_manager.dart';
@@ -79,7 +80,9 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
                 Text("Already have an account?",style: FontsStyles.Entermail.copyWith(
                     color: ColorsManager.white
                 ),),
-                TextButton(onPressed: (){}, child:Text("Login Now",style: FontsStyles.Entermail.copyWith(
+                TextButton(onPressed: (){
+                  Navigator.pushNamed(context, RoutesManager.loginScreen);
+                }, child:Text("Login Now",style: FontsStyles.Entermail.copyWith(
                     color: ColorsManager.Lemon
                 ),))
               ],
