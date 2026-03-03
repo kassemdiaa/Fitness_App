@@ -22,7 +22,7 @@ class _PasswordChangedScreenState extends State<PasswordChangedScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, RoutesManager.layoutScreen);
+      Navigator.pushReplacementNamed(context, RoutesManager.loginScreen);
     });
   }
   Widget build(BuildContext context) {
