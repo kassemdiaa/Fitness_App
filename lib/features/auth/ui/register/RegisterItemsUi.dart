@@ -24,7 +24,7 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
           children: [
             Padding(
               padding: REdgeInsets.all(22.0),
-              child: Image.asset(ImagesManager.PharofitIcon),
+              child: Image.asset('assets/images/logo.png', width: 50.w),
             ),
             SizedBox(height: 12.h),
             Padding(

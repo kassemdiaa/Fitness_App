@@ -14,29 +14,33 @@ class CustomElevatedButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        foregroundColor: foregroundColor,
-        padding: REdgeInsets.symmetric(horizontal: 80, vertical: 22),
-        shape: RoundedSuperellipseBorder(
-          borderRadius: BorderRadius.circular(28.r),
+    return Container(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+          padding: REdgeInsets.symmetric(horizontal: 80, vertical: 22),
+          shape: RoundedSuperellipseBorder(
+            borderRadius: BorderRadius.circular(28.r),
+          ),
+          textStyle: FontsStyles.forgetbuttontext.copyWith(
+            color: foregroundColor,
+            fontSize: 15.sp
+          )
         ),
-        textStyle: FontsStyles.forgetbuttontext.copyWith(
-          color: foregroundColor
-        )
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (PrefixIcon != null) ...[
-            Icon(PrefixIcon, color: foregroundColor),
-            SizedBox(width: 10.w),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (PrefixIcon != null) ...[
+              Icon(PrefixIcon, color: foregroundColor),
+              SizedBox(width: 10.w),
+            ],
+            Text(title,style: FontsStyles.forgetbuttontext,),
           ],
-          Text(title,style: FontsStyles.forgetbuttontext,),
-        ],
+        ),
       ),
     );
   }
