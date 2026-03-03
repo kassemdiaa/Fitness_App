@@ -68,7 +68,9 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
             SizedBox(height: 30.h),
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 22.w),
-              child: CustomElevatedButton(onPressed: () {}, title: "Register",
+              child: CustomElevatedButton(onPressed: () {
+                Navigator.pushNamed(context, RoutesManager.loginScreen);
+              }, title: "Register",
                 backgroundColor: ColorsManager.white,
                 foregroundColor: ColorsManager.black,
               ),

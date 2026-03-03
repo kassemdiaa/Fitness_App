@@ -12,34 +12,52 @@ class ResetPasswordItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: 22.h,),
-          Text("Create New Password",style: FontsStyles.welcomeAuthtext.copyWith(
-            color: ColorsManager.white.withOpacity(0.8)
-          ),),
-          Padding(
-            padding:  REdgeInsets.all(12.0),
-            child: Text("Your new password must be unique from those previously used.",style: FontsStyles.warringForgetpass.copyWith(
-              color: ColorsManager.white.withOpacity(0.8),
-            ),maxLines: 2,),
+      child: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Column(
+            children: [
+              SizedBox(height: 22.h),
+              Text(
+                "Create New Password",
+                style: FontsStyles.welcomeAuthtext.copyWith(
+                  color: ColorsManager.white.withOpacity(0.8),
+                ),
+              ),
+              Padding(
+                padding: REdgeInsets.all(12.0),
+                child: Text(
+                  "Your new password must be unique from those previously used.",
+                  style: FontsStyles.warringForgetpass.copyWith(
+                    color: ColorsManager.white.withOpacity(0.8),
+                  ),
+                  maxLines: 2,
+                ),
+              ),
+              Custometextforemfield(
+                hint: "New Password",
+                label: "New Password",
+                color: ColorsManager.white.withOpacity(0.8),
+              ),
+              SizedBox(height: 10.h),
+              Custometextforemfield(
+                hint: "Confirm Password",
+                label: "Confirm Password",
+                color: ColorsManager.white.withOpacity(0.8),
+              ),
+              SizedBox(height: 10.h),
+              CustomElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RoutesManager.passwordChanged);
+                },
+                title: "Reset Password",
+                backgroundColor: ColorsManager.white,
+                foregroundColor: ColorsManager.black,
+              ),
+            ],
           ),
-          Padding(
-            padding:REdgeInsets.all(14.0),
-            child: Custometextforemfield(hint: "New Password", label: "New Password", color:ColorsManager.white.withOpacity(0.8)),
-          ),
-          Padding(
-            padding:REdgeInsets.all(14.0),
-            child: Custometextforemfield(hint: "Confirm Password", label: "Confirm Password", color:ColorsManager.white.withOpacity(0.8)),
-          ),
-          SizedBox(height: 10.h,),
-          CustomElevatedButton(onPressed: (){
-            Navigator.pushNamed(context, RoutesManager.passwordChanged);
-          },
-              title: "Reset Password", backgroundColor: ColorsManager.white, foregroundColor: ColorsManager.black)
-        ],
+        ),
       ),
-    ));
+    );
   }
 }
