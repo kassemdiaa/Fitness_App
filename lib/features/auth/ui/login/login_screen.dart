@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
               backgroundColor: ColorsManager.white,
               foregroundColor: ColorsManager.black,
               onPressed: () {
-                Navigator.pushNamed(context, RoutesManager.registerScreen);
+                Navigator.pushNamed(context, RoutesManager.loginScreenSucessfully);
               },
               title: 'Login',
             ),
