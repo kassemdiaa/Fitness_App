@@ -6,7 +6,7 @@ import '../../../../core/RoutesManager.dart';
 import '../../../../core/SharedWidgets/CustomTextFormField.dart';
 import '../../../../core/colors_manager.dart';
 import '../../../../core/fonts_manager.dart';
-import '../widgets/CustomeTextButton.dart';
+import '../../../../core/SharedWidgets/CustomeTextButton.dart';
 
 class Forgetpassui extends StatefulWidget {
   const Forgetpassui({super.key});

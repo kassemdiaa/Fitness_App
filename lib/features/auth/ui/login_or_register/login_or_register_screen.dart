@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/RoutesManager.dart';
-import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:fitness_app/core/colors_manager.dart';
+import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/SharedWidgets/CustomTextFormField.dart';
-import '../widgets/CustomeTextButton.dart';
+import '../../../../core/SharedWidgets/CustomeTextButton.dart';
 import '../../../../core/colors_manager.dart';
 import '../../../../core/fonts_manager.dart';
 import '../../../../core/images_manager.dart';

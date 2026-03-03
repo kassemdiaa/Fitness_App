@@ -2,7 +2,7 @@ import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:fitness_app/core/SharedWidgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
-import 'package:fitness_app/features/auth/ui/widgets/CustomeTextButton.dart';
+import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
