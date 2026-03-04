@@ -26,26 +26,28 @@ class LoginScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Container(
-              width: 44.w,
-              height: 44.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(13.r),
-                  topRight: Radius.circular(13.r),
-                  bottomLeft: Radius.circular(13.r),
-                  bottomRight: Radius.circular(13.r),
+            icon: SingleChildScrollView(
+              child: Container(
+                width: 44.w,
+                height: 44.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(13.r),
+                    topRight: Radius.circular(13.r),
+                    bottomLeft: Radius.circular(13.r),
+                    bottomRight: Radius.circular(13.r),
+                  ),
+                  border: Border.all(
+                    color: ColorsManager.white,
+                    width: 1.w,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                  ),
                 ),
-                border: Border.all(
+                child: Icon(
+                  CupertinoIcons.arrow_left,
                   color: ColorsManager.white,
-                  width: 1.w,
-                  strokeAlign: BorderSide.strokeAlignInside,
+                  weight: 7.w,
                 ),
-              ),
-              child: Icon(
-                CupertinoIcons.arrow_left,
-                color: ColorsManager.white,
-                weight: 7.w,
               ),
             ),
           ),
