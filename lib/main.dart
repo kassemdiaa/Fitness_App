@@ -1,16 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/config/theme/theme_maneger.dart';
 import 'package:fitness_app/core/RoutesManager.dart';
+import 'package:fitness_app/features/auth/Logic/auth_cubit.dart';
+import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const FitnessApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    BlocProvider(
+      create: (BuildContext context) => AuthCubit(),
+      child: FitnessApp(),
+    ),
+  );
 }
 
 class FitnessApp extends StatelessWidget {
   const FitnessApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
