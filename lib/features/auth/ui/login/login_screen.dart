@@ -3,15 +3,59 @@ import 'package:fitness_app/core/SharedWidgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
-import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
+import 'package:fitness_app/features/auth/Logic/auth_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool _isValidEmail(String email) {
+    final regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return regex.hasMatch(email);
+  }
+
+  void _LoginWithEmail() {
+    if (emailController.text.trim().isEmpty ||
+        passwordController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("All fields are required"),
+          backgroundColor: ColorsManager.red,
+        ),
+      );
+    }
+
+    if (!_isValidEmail(emailController.text.trim())) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Invalid email format"),
+          backgroundColor: ColorsManager.red,
+        ),
+      );
+      return;
+    }
+    context.read<AuthCubit>().logIn(
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+  }
+ @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,10 +97,16 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 80.h,),
+              SizedBox(height: 80.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [Image.asset('assets/images/logo.png', width: 50.w,height: 60,)],
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    width: 50.w,
+                    height: 60,
+                  ),
+                ],
               ),
               SizedBox(height: 26.h),
               Row(
@@ -70,6 +120,7 @@ class LoginScreen extends StatelessWidget {
                 hint: 'Enter your Email',
                 label: 'Email',
                 color: ColorsManager.white,
+                controller: emailController,
               ),
               SizedBox(height: 16.h),
               Custometextforemfield(
@@ -77,6 +128,7 @@ class LoginScreen extends StatelessWidget {
                 label: 'Password',
                 color: ColorsManager.white,
                 prefixIcon: CupertinoIcons.eye,
+                controller: passwordController,
               ),
               SizedBox(height: 16.h),
               Row(
@@ -98,13 +150,34 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 16.h),
-              CustomElevatedButton(
-                backgroundColor: ColorsManager.white,
-                foregroundColor: ColorsManager.black,
-                onPressed: () {
-                  Navigator.pushNamed(context, RoutesManager.loginScreenSucessfully);
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  if (state is Authenticated) {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RoutesManager.layoutScreen,
+                    );
+                  }
+                  if (state is UnAuthenticated) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Login failed. Please try again."),
+                        backgroundColor: ColorsManager.red,
+                      ),
+                    );
+                  }
                 },
-                title: 'Login',
+                builder: (context, state) {
+                  if (state is AuthLoading) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  return CustomElevatedButton(
+                    backgroundColor: ColorsManager.white,
+                    foregroundColor: ColorsManager.black,
+                    onPressed: _LoginWithEmail,
+                    title: 'Login',
+                  );
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +190,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RoutesManager.registerScreen);
+                      Navigator.pushNamed(
+                        context,
+                        RoutesManager.registerScreen,
+                      );
                     },
                     child: Text(
                       "Register Now",

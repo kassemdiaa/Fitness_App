@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "236994617810",
+    "project_id": "pharofit-615e3",
+    "storage_bucket": "pharofit-615e3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236994617810:android:cbf4d40492975c3061280b",
+        "android_client_info": {
+          "package_name": "com.example.fitness_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236994617810-s8ktsj3u2ngngtd6fl5f984nelfjpc0f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5vkXbsligKigY06Pl30uKG8dA_AZ9kM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236994617810-s8ktsj3u2ngngtd6fl5f984nelfjpc0f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "236994617810-5p2qtpn4vrdoh14qddtkvdtb3mr5vadt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitnessApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
