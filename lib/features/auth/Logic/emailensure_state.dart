@@ -1,5 +1,4 @@
 part of 'emailensure_cubit.dart';
-
 @immutable
 sealed class EmailensureState {}
 final class EmailensureInitial extends EmailensureState {}

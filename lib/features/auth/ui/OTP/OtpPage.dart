@@ -36,17 +36,19 @@ class _OtppageState extends State<Otppage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        Pinput(
-        defaultPinTheme: defaultPinTheme,
-        focusedPinTheme: focusedPinTheme,
-        submittedPinTheme: submittedPinTheme,
-        validator: (s) {
-          return s == '2222' ? null : 'Pin is incorrect';
-        },
-        pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-        showCursor: true,
-        onCompleted: (pin) => print(pin),
-      ),
+        Center(
+          child: Pinput(
+          defaultPinTheme: defaultPinTheme,
+          focusedPinTheme: focusedPinTheme,
+          submittedPinTheme: submittedPinTheme,
+          validator: (s) {
+            return s == '2222' ? null : 'Pin is incorrect';
+          },
+          pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+          showCursor: true,
+          onCompleted: (pin) => print(pin),
+                ),
+        ),
         ],
       ),
     );

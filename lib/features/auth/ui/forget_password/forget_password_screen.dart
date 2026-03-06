@@ -1,6 +1,5 @@
 import 'package:fitness_app/core/SharedWidgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
-import 'package:fitness_app/features/auth/ui/forget_password/ForgetPassItemsUi.dart';
 import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,6 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   TextEditingController emailController=TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            physics:  BouncingScrollPhysics(),
+            physics:BouncingScrollPhysics(),
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
@@ -56,11 +54,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   ),
                   SizedBox(height: 20.h,),
                   BlocConsumer<EmailensureCubit, EmailensureState>(
-                    listenWhen: (previous, current) => current is RightEmail || current is Emailwrong,
                     listener: (context, state) {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       if (state is RightEmail) {
-                          Navigator.pushNamed(context, RoutesManager.otp);
+                          Navigator.pushNamed(context, RoutesManager.resetpassword);
                       } else if (state is Emailwrong) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -72,7 +69,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     },
                     builder: (context, state) {
                       if (state is Emailensureloading) {
-                        return const Center(child: CircularProgressIndicator(color: Colors.white));
+                        return const Center(child: CircularProgressIndicator(color: ColorsManager.Iceblue));
                       }
                       return CustomElevatedButton(
                         onPressed: () {
