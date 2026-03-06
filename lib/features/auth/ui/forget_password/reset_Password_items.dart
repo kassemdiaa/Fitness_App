@@ -19,8 +19,7 @@ class ResetPasswordItems extends StatelessWidget {
             children: [
               SizedBox(height: 22.h),
               Text(
-                "Create New Password",
-                style: FontsStyles.welcomeAuthtext.copyWith(
+                "Create New Password", style: FontsStyles.welcomeAuthtext.copyWith(
                   color: ColorsManager.white.withOpacity(0.8),
                 ),
               ),
