@@ -1,4 +1,8 @@
+import 'package:fitness_app/core/RoutesManager.dart';
+import 'package:fitness_app/core/colors_manager.dart';
+import 'package:fitness_app/features/auth/Logic/emailensure_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 class Otppage extends StatefulWidget {
@@ -29,6 +33,7 @@ class _OtppageState extends State<Otppage> {
       color: Color.fromRGBO(234, 239, 243, 1),
     ),
   );
+  final _pinController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,17 +42,30 @@ class _OtppageState extends State<Otppage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
         Center(
-          child: Pinput(
-          defaultPinTheme: defaultPinTheme,
-          focusedPinTheme: focusedPinTheme,
-          submittedPinTheme: submittedPinTheme,
-          validator: (s) {
-            return s == '2222' ? null : 'Pin is incorrect';
-          },
-          pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-          showCursor: true,
-          onCompleted: (pin) => print(pin),
-                ),
+          child: BlocConsumer<EmailensureCubit, EmailensureState>(
+           listener: (context, state) {
+             if(state is PhoneOtpcorrect){
+               Navigator.pushNamed(context, RoutesManager.resetpassword);
+             } else if(state is PhoneOtpWrong) {
+               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Wrong Code"),backgroundColor: ColorsManager.red,));
+             }
+           },
+            builder: (context, state) {
+              if (state is Emailensureloading) {
+                return Center(child: CircularProgressIndicator());
+              }
+              return Pinput(
+                length: 6,
+                controller: _pinController,
+                defaultPinTheme: defaultPinTheme,
+                focusedPinTheme: focusedPinTheme,
+                submittedPinTheme: submittedPinTheme,
+                pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                showCursor: true,
+                onCompleted: (pin) => context.read<EmailensureCubit>().otpSend(pin),
+              );
+            },
+          ),
         ),
         ],
       ),
