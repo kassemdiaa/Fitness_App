@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class WorkoutItem extends StatelessWidget {
-  const WorkoutItem({super.key});
-
+  const WorkoutItem({super.key, required this.imagePath, required this.ontap});
+  final String imagePath;
+  final VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return InkWell(
+      onTap: ontap,
+      child: Image.asset(imagePath),
+    );
   }
 }
