@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/ui/login/login_sucssesfully_screen.dar
 import 'package:fitness_app/features/auth/ui/login_or_register/login_or_register_screen.dart';
 import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/success_screen.dart';
 import 'package:fitness_app/features/mainlayout/mainlayout.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
 import 'package:fitness_app/features/splash/splash.dart';
@@ -28,6 +29,7 @@ class RoutesManager {
   static const String article = '/article';
   static const String splash = '/splash';
   static const String otp = '/Otp';
+  static const String successScreen = '/successScreen';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -53,8 +55,10 @@ class RoutesManager {
       case homeScreen:
         return CupertinoPageRoute(builder: (_) => HomeScreen());
       case otp:
-        return CupertinoPageRoute(builder: (_)=> Otppage());
-    }
+        return CupertinoPageRoute(builder: (_) => Otppage());
+      case successScreen:
+        return CupertinoPageRoute(builder: (_) => SuccessScreen());
+      }
     return null;
   }
 }
