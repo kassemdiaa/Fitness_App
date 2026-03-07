@@ -18,7 +18,6 @@ class AuthCubit extends Cubit<AuthState> {
       emit(Authenticated(token: token));
     } on FirebaseAuthException catch (e) {
       emit(UnAuthenticated(Message: "$e"));
-      print(UnAuthenticated(Message: "$e"));
     } catch (e) {
       emit(UnAuthenticated(Message: "$e"));
     }
