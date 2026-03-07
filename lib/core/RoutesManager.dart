@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/auth/ui/OTP/OtpPage.dart';
 import 'package:fitness_app/features/auth/ui/forget_password/forget_password_screen.dart';
 import 'package:fitness_app/features/auth/ui/forget_password/password_changed_screen.dart';
 import 'package:fitness_app/features/auth/ui/forget_password/reset_password_screen.dart';
@@ -26,6 +27,7 @@ class RoutesManager {
   static const String favorites = '/favourites';
   static const String article = '/article';
   static const String splash = '/splash';
+  static const String otp = '/Otp';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -50,6 +52,8 @@ class RoutesManager {
         return CupertinoPageRoute(builder: (_) => Mainlayout());
       case homeScreen:
         return CupertinoPageRoute(builder: (_) => HomeScreen());
+      case otp:
+        return CupertinoPageRoute(builder: (_)=> Otppage());
     }
     return null;
   }
