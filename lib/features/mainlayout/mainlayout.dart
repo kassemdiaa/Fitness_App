@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/colors_manager.dart';
-import 'package:fitness_app/features/mainlayout/favorites/ui/favorits_screen.dart';
+import 'package:fitness_app/features/mainlayout/couches/ui/screens/couches_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,7 +21,7 @@ class _MainlayoutState extends State<Mainlayout> {
   final List<Widget> pages = [
     HomeScreen(),
     ArticlesScreen(),
-    FavoritsScreen(),
+    CouchesScreen(),
     ProfileScreen(),
   ];
   final List<NavBarItem> items = [
