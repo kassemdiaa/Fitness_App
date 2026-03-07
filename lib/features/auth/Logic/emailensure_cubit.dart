@@ -6,24 +6,39 @@ part 'emailensure_state.dart';
 
 class EmailensureCubit extends Cubit<EmailensureState> {
   EmailensureCubit() : super(EmailensureInitial());
-  final FirebaseAuth _auth= FirebaseAuth.instance;
-  Future<void>VerifyEmail(String email)async{
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> verifyEmail(String email) async {
     emit(Emailensureloading());
-    try{
+    try {
       await _auth.sendPasswordResetEmail(email: email);
       emit(RightEmail(token: email));
-    }on FirebaseAuthException catch(e){
-      String ErrorMessage=' ';
-      if(e.code == 'user-not-found'){
-        ErrorMessage="Doesn't Exist";
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = '';
+      if (e.code == 'user-not-found') {
+        errorMessage = "Doesn't Exist";
       } else if (e.code == 'invalid-email') {
-        ErrorMessage = "Invaild email";
+        errorMessage = "Invalid email";
       } else if (e.code == 'too-many-requests') {
-        ErrorMessage = "Too Many requests";
+        errorMessage = "Too Many requests";
+      } else {
+        errorMessage = e.message ?? 'Something went wrong';
       }
-      emit(Emailwrong(message: ErrorMessage));
-    }catch(e){
+      emit(Emailwrong(message: errorMessage));
+    } catch (e) {
       emit(Emailwrong(message: e.toString()));
+    }
+  }
+
+  Future<void> otpSend(String otp) async {
+    emit(Emailensureloading());
+    try {
+      await _auth.verifyPasswordResetCode(otp);
+      emit(PhoneOtpcorrect(otp: otp));
+    } on FirebaseAuthException catch (e) {
+      emit(PhoneOtpWrong(error: e.toString()));
+    } catch (e) {
+      emit(PhoneOtpWrong(error: e.toString()));
     }
   }
 }

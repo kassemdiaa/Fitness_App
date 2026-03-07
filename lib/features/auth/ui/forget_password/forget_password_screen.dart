@@ -62,7 +62,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(state.message),
-                            backgroundColor: Colors.red,
+                            backgroundColor: ColorsManager.red,
                           ),
                         );
                       }
@@ -76,7 +76,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           FocusManager.instance.primaryFocus?.unfocus();
                           final emailText = emailController.text.trim();
                           if (emailText.isNotEmpty) {
-                            context.read<EmailensureCubit>().VerifyEmail(emailText);
+                            context.read<EmailensureCubit>().verifyEmail(emailText);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text("Please enter your email")),

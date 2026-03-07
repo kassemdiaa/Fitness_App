@@ -24,6 +24,7 @@ dependencies:
   firebase_auth: ^6.2.0
   flutter_bloc: ^9.1.1
   pinput: ^6.0.2
+  glass_nav_bar: ^0.0.5
 
 dev_dependencies:
   flutter_test:

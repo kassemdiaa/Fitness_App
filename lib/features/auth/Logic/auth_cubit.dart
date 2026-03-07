@@ -39,9 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
-
     emit(Authenticated(token: token));
-
   } on FirebaseAuthException catch (e) {
     emit(UnAuthenticated(Message: e.message ?? "Authentication failed"));
   } catch (e) {
