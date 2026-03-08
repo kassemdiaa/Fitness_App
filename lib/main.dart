@@ -2,10 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/config/theme/theme_maneger.dart';
 import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:fitness_app/features/auth/Logic/auth_cubit.dart';
+import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
 import 'package:fitness_app/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import 'features/auth/Logic/emailensure_cubit.dart';
 
@@ -13,14 +15,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
-    MultiBlocProvider(
+    MultiProvider(
       providers: [
-        BlocProvider(
-          create: (BuildContext context) => AuthCubit(),
-        ),
-        BlocProvider(
-          create: (BuildContext context) => EmailensureCubit(),
-        ),
+        BlocProvider(create: (BuildContext context) => AuthCubit()),
+        BlocProvider(create: (BuildContext context) => EmailensureCubit()),
+        ChangeNotifierProvider(create: (context) => SelectedCouchProvider()),
       ],
       child: FitnessApp(),
     ),
@@ -41,7 +40,7 @@ class FitnessApp extends StatelessWidget {
         theme: ThemeManeger.dark,
         darkTheme: ThemeManeger.dark,
         themeMode: ThemeMode.dark,
-        initialRoute: RoutesManager.couchScreen,
+        initialRoute: RoutesManager.layoutScreen,
         onGenerateRoute: RoutesManager.getRoute,
       ),
     );

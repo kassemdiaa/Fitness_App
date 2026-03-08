@@ -6,13 +6,18 @@ import 'package:fitness_app/features/auth/ui/login/login_screen.dart';
 import 'package:fitness_app/features/auth/ui/login/login_sucssesfully_screen.dart';
 import 'package:fitness_app/features/auth/ui/login_or_register/login_or_register_screen.dart';
 import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
+import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
+import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_deitails_screen.dart';
+import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_transformations_screen.dart';
 import 'package:fitness_app/features/mainlayout/couches/ui/screens/couches_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/success_screen.dart';
 import 'package:fitness_app/features/mainlayout/mainlayout.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
+import 'package:fitness_app/features/payment/ui/payment_screen.dart';
 import 'package:fitness_app/features/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 class RoutesManager {
   static const String onboardingScreen = '/onboarding';
@@ -32,6 +37,9 @@ class RoutesManager {
   static const String otp = '/Otp';
   static const String successScreen = '/successScreen';
   static const String couchScreen = '/couchScreen';
+  static const String couchDeitailsScreen = '/couchdeitailsScreen';
+  static const String paymentScreen = '/paymentScreen';
+    static const String couchTranformationsScreen = '/couchTranformationsScreen';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -60,9 +68,15 @@ class RoutesManager {
         return CupertinoPageRoute(builder: (_) => Otppage());
       case successScreen:
         return CupertinoPageRoute(builder: (_) => SuccessScreen());
-        case couchScreen:
+      case couchDeitailsScreen:
+        return CupertinoPageRoute(builder: (_) => CouchDeitailsScreen());
+      case couchScreen:
         return CupertinoPageRoute(builder: (_) => CouchesScreen());
-      }
+      case paymentScreen:
+        return CupertinoPageRoute(builder: (_) => PaymentScreen());
+      case couchTranformationsScreen:
+        return CupertinoPageRoute(builder: (_) => CouchTransformationsScreen());
+    }
     return null;
   }
 }

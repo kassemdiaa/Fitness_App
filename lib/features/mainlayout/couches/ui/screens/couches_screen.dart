@@ -1,10 +1,13 @@
+import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:fitness_app/core/SharedWidgets/CustomTextFormField.dart';
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/data/models/couches_models/couch_model.dart';
+import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
 import 'package:fitness_app/features/mainlayout/couches/ui/widgets/couch_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class CouchesScreen extends StatelessWidget {
   const CouchesScreen({super.key});
@@ -27,7 +30,12 @@ class CouchesScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemBuilder: (context, index) => InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.read<SelectedCouchProvider>().selectCouch(
+                      CouchModel.couches[index],
+                    );
+                    Navigator.pushNamed(context, RoutesManager.couchDeitailsScreen);
+                  },
                   child: CouchItem(
                     name: CouchModel.couches[index].name,
                     imagePath: CouchModel.couches[index].imagePath,
