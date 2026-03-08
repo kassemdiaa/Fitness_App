@@ -14,11 +14,14 @@ class CouchTransformationsScreen extends StatelessWidget {
     CouchModel couch = context.read<SelectedCouchProvider>().selectedCouch;
     return Scaffold(
       backgroundColor: ColorsManager.Purple,
-      body: Expanded(
-        child: ListView.separated(
-          itemBuilder: (context, index) => TransformationItem(couch: couch,),
-          separatorBuilder: (context, index) => SizedBox(height: 14.h,),
-          itemCount: couch.transformations.length,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 40.h),
+        child: Expanded(
+          child: ListView.separated(
+            itemBuilder: (context, index) => TransformationItem(transformation: couch.transformations[index],),
+            separatorBuilder: (context, index) => SizedBox(height: 14.h,),
+            itemCount: couch.transformations.length,
+          ),
         ),
       ),
     );
