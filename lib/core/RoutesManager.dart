@@ -14,13 +14,14 @@ import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/success_screen.dart';
 import 'package:fitness_app/features/mainlayout/mainlayout.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
+import 'package:fitness_app/features/onbourding/achive/achive_screen.dart';
+import 'package:fitness_app/features/onbourding/height/height_screen.dart';
 import 'package:fitness_app/features/payment/ui/payment_screen.dart';
 import 'package:fitness_app/features/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
 class RoutesManager {
-  static const String onboardingScreen = '/onboarding';
+  static const String heightScreen = '/heightScreen';
   static const String chooseAuth = '/choose';
   static const String loginScreen = '/login';
   static const String loginScreenSucessfully = '/loginsucess';
@@ -40,6 +41,7 @@ class RoutesManager {
   static const String couchDeitailsScreen = '/couchdeitailsScreen';
   static const String paymentScreen = '/paymentScreen';
     static const String couchTranformationsScreen = '/couchTranformationsScreen';
+    static const String achiveScreen = '/achiveScreen';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -76,6 +78,10 @@ class RoutesManager {
         return CupertinoPageRoute(builder: (_) => PaymentScreen());
       case couchTranformationsScreen:
         return CupertinoPageRoute(builder: (_) => CouchTransformationsScreen());
+      case heightScreen:
+        return CupertinoPageRoute(builder: (_) => HeightScreen());
+      case achiveScreen:
+        return CupertinoPageRoute(builder: (_) => AchiveScreen());
     }
     return null;
   }
