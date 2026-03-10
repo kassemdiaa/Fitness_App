@@ -1,8 +1,10 @@
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/widgets/settings_item.dart';
+import 'package:fitness_app/providers/user_cradintials_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -32,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               Text(
-                'Kassem',
+                context.read<UserCradintialsProvider>().userName,
                 style: GoogleFonts.montserratAlternates(
                   color: ColorsManager.white,
                   fontSize: 24.sp,
@@ -41,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 12.h),
               Text(
-                '180 cm',
+                context.read<UserCradintialsProvider>().height.toString(),
                 style: GoogleFonts.montserratAlternates(
                   color: ColorsManager.lightGray,
                   fontSize: 10.sp,
@@ -49,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                '62 KG',
+                context.read<UserCradintialsProvider>().weight.toString(),
                 style: GoogleFonts.montserratAlternates(
                   color: ColorsManager.lightGray,
                   fontSize: 20.sp,
