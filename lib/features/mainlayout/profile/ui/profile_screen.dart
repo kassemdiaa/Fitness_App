@@ -51,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                context.read<UserCradintialsProvider>().weight.toString(),
+                context.read<UserCradintialsProvider>().weight.toString() ,
                 style: GoogleFonts.montserratAlternates(
                   color: ColorsManager.lightGray,
                   fontSize: 20.sp,
