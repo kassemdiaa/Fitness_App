@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/ui/login/login_screen.dart';
 import 'package:fitness_app/features/auth/ui/login/login_sucssesfully_screen.dart';
 import 'package:fitness_app/features/auth/ui/login_or_register/login_or_register_screen.dart';
 import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
+import 'package:fitness_app/features/mainlayout/articles/ui/article_deitails/articles_deitails_screen.dart';
 import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
 import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_deitails_screen.dart';
 import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_transformations_screen.dart';
@@ -42,6 +43,7 @@ class RoutesManager {
   static const String paymentScreen = '/paymentScreen';
     static const String couchTranformationsScreen = '/couchTranformationsScreen';
     static const String achiveScreen = '/achiveScreen';
+    static const String articlesdetailes = '/articlesDetailes';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -82,6 +84,8 @@ class RoutesManager {
         return CupertinoPageRoute(builder: (_) => HeightScreen());
       case achiveScreen:
         return CupertinoPageRoute(builder: (_) => AchiveScreen());
+      case articlesdetailes:
+        return CupertinoPageRoute(builder: (_)=> ArticlesDeitailsScreen());
     }
     return null;
   }

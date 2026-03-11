@@ -20,8 +20,8 @@ class _MainlayoutState extends State<Mainlayout> {
 
   final List<Widget> pages = [
     HomeScreen(),
-    ArticlesScreen(),
     CouchesScreen(),
+    ArticlesScreen(),
     ProfileScreen(),
   ];
   final List<NavBarItem> items = [
@@ -49,7 +49,7 @@ class _MainlayoutState extends State<Mainlayout> {
             children: [
               _buildIcon(Icons.home_filled, 0),
               _buildIcon(CupertinoIcons.person_3, 1),
-              _buildIcon(CupertinoIcons.folder, 2),
+              _buildIcon(CupertinoIcons.news, 2),
               _buildIcon(CupertinoIcons.person, 3),
             ],
           ),

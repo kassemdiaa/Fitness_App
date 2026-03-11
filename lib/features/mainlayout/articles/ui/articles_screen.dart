@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/mainlayout/articles/ui/article_item.dart';
 import 'package:flutter/material.dart';
 
 class ArticlesScreen extends StatelessWidget {
@@ -5,6 +6,13 @@ class ArticlesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Column(
+        children: [
+          Expanded(child: ArticleItem()),
+        ],
+      ),
+    );
   }
 }
