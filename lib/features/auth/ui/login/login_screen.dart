@@ -4,6 +4,7 @@ import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
 import 'package:fitness_app/features/auth/Logic/auth_cubit.dart';
+import 'package:fitness_app/providers/user_cradintials_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   bool _isValidEmail(String email) {
     final regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return regex.hasMatch(email);
@@ -117,6 +119,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 26.h),
               Custometextforemfield(
+                hint: 'Username',
+                label: 'Username',
+                color: ColorsManager.white,
+                controller: usernameController,
+              ),
+              SizedBox(height: 16.h),
+              Custometextforemfield(
                 hint: 'Enter your Email',
                 label: 'Email',
                 color: ColorsManager.white,
@@ -153,6 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state is Authenticated) {
+                    context.read<UserCradintialsProvider>().changeName(usernameController.text.trim());
                     Navigator.pushReplacementNamed(
                       context,
                       RoutesManager.layoutScreen,

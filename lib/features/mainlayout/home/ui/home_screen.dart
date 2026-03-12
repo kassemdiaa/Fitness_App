@@ -1,9 +1,11 @@
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_item.dart';
+import 'package:fitness_app/providers/user_cradintials_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Welcome, Roberto !',
+                  'Welcome, ${context.read<UserCradintialsProvider>().userName} !',
                   style: GoogleFonts.montserrat(
                     color: ColorsManager.white,
                     fontSize: 20.sp,
