@@ -4,6 +4,7 @@ import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:fitness_app/features/auth/Logic/auth_cubit.dart';
 import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
 import 'package:fitness_app/firebase_options.dart';
+import 'package:fitness_app/providers/user_cradintials_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ Future<void> main() async {
         BlocProvider(create: (BuildContext context) => AuthCubit()),
         BlocProvider(create: (BuildContext context) => EmailensureCubit()),
         ChangeNotifierProvider(create: (context) => SelectedCouchProvider()),
+        ChangeNotifierProvider(create: (context) => UserCradintialsProvider()),
       ],
       child: FitnessApp(),
     ),

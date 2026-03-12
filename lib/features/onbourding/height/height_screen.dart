@@ -1,5 +1,7 @@
+import 'package:fitness_app/providers/user_cradintials_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
 
 class HeightScreen extends StatefulWidget {
   const HeightScreen({super.key});
@@ -34,12 +36,12 @@ class _HeightScreenState extends State<HeightScreen> {
   void _onUnitToggle(bool toCm) => setState(() => _isCm = toCm);
 
   void _onValueChanged(double value) => setState(() {
-    if (_isCm) {
-      _heightCm = value;
-    } else {
-      _heightInches = value;
-    }
-  });
+        if (_isCm) {
+          _heightCm = value;
+        } else {
+          _heightInches = value;
+        }
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -47,26 +49,26 @@ class _HeightScreenState extends State<HeightScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               const _StepIndicator(currentStep: 1),
-              SizedBox(height: 36.h),
-              Text(
+              const SizedBox(height: 36),
+              const Text(
                 'What is your\nheight?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 28.sp,
+                  fontSize: 28,
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF1C1C2E),
-                  height: 1.2.h,
+                  height: 1.2,
                 ),
               ),
-              SizedBox(height: 28.h),
+              const SizedBox(height: 28),
               _UnitToggle(isCm: _isCm, onToggle: _onUnitToggle),
-              SizedBox(height: 24.h),
+              const SizedBox(height: 24),
               Expanded(
                 child: _RulerCard(
                   value: _currentValue,
@@ -77,9 +79,22 @@ class _HeightScreenState extends State<HeightScreen> {
                   onChanged: _onValueChanged,
                 ),
               ),
-              SizedBox(height: 24.h),
-              _BottomButtons(onNext: () {}, onBack: () {}),
-              SizedBox(height: 24.h),
+              const SizedBox(height: 24),
+              _BottomButtons(
+                onNext: () {
+                  final heightInCm = _isCm
+                      ? _heightCm.round()
+                      : (_heightInches * 2.54).round();
+                  context
+                      .read<UserCradintialsProvider>()
+                      .changeHeight(heightInCm);
+                  // TODO: navigate to next screen
+                },
+                onBack: () {
+                  Navigator.pop(context);
+                },
+              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -102,16 +117,16 @@ class _StepIndicator extends StatelessWidget {
         final isActive = index == currentStep;
         final isPast = index < currentStep;
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          margin: const EdgeInsets.symmetric(horizontal: 4),
           width: isActive ? 32 : 24,
-          height: 5.h,
+          height: 5,
           decoration: BoxDecoration(
             color: isPast
                 ? const Color(0xFFB2E4E0)
                 : isActive
-                ? const Color(0xFF1C1C2E)
-                : const Color(0xFFD9D9D9),
-            borderRadius: BorderRadius.circular(10.r),
+                    ? const Color(0xFF1C1C2E)
+                    : const Color(0xFFD9D9D9),
+            borderRadius: BorderRadius.circular(10),
           ),
         );
       }),
@@ -130,11 +145,11 @@ class _UnitToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(50.r),
-        border: Border.all(color: const Color(0xFFE5E5E5), width: 1.5.w),
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(color: const Color(0xFFE5E5E5), width: 1.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -172,15 +187,15 @@ class _ToggleOption extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF1C1C2E) : Colors.transparent,
-          borderRadius: BorderRadius.circular(50.r),
+          borderRadius: BorderRadius.circular(50),
         ),
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 15.sp,
+            fontSize: 15,
             fontWeight: FontWeight.w500,
             color: isSelected ? Colors.white : const Color(0xFFAAAAAA),
           ),
@@ -244,10 +259,8 @@ class _RulerCardState extends State<_RulerCard> {
   void _onScroll() {
     if (!_isScrolling) return;
     final offset = _scrollController.offset;
-    final newValue = (offset / _pixelsPerUnit + widget.min).clamp(
-      widget.min,
-      widget.max,
-    );
+    final newValue =
+        (offset / _pixelsPerUnit + widget.min).clamp(widget.min, widget.max);
     final rounded = newValue.roundToDouble();
     if (rounded != widget.value) widget.onChanged(rounded);
   }
@@ -265,7 +278,7 @@ class _RulerCardState extends State<_RulerCard> {
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFFE8F5F4),
-        borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -277,17 +290,17 @@ class _RulerCardState extends State<_RulerCard> {
             child: Text(
               widget.displayValue,
               key: ValueKey(widget.displayValue),
-              style: TextStyle(
-                fontSize: 72.sp,
+              style: const TextStyle(
+                fontSize: 72,
                 fontWeight: FontWeight.w800,
                 color: Color(0xFF1C1C2E),
                 height: 1,
               ),
             ),
           ),
-          SizedBox(height: 20.h),
+          const SizedBox(height: 20),
           SizedBox(
-            height: 60.h,
+            height: 60,
             child: NotificationListener<ScrollNotification>(
               onNotification: (notification) {
                 if (notification is ScrollStartNotification) {
@@ -330,21 +343,21 @@ class _RulerCardState extends State<_RulerCard> {
                             if (isLabel)
                               Text(
                                 val.toInt().toString(),
-                                style: TextStyle(
-                                  fontSize: 11.sp,
+                                style: const TextStyle(
+                                  fontSize: 11,
                                   color: Color(0xFF8AADA9),
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                            if (!isLabel) SizedBox(height: 14.h),
-                            SizedBox(height: 2.h),
+                            if (!isLabel) const SizedBox(height: 14),
+                            const SizedBox(height: 2),
                             Container(
-                              width: 1.5.w,
+                              width: 1.5,
                               height: isLabel
-                                  ? 22.h
+                                  ? 22
                                   : isMajor
-                                  ? 16.h
-                                  : 10.h,
+                                      ? 16
+                                      : 10,
                               color: isLabel
                                   ? const Color(0xFF6B9E9A)
                                   : const Color(0xFFAACECB),
@@ -357,8 +370,8 @@ class _RulerCardState extends State<_RulerCard> {
                   Positioned(
                     bottom: 0,
                     child: Container(
-                      width: 2.5.w,
-                      height: 30.h,
+                      width: 2.5,
+                      height: 30,
                       decoration: BoxDecoration(
                         color: const Color(0xFF1C1C2E),
                         borderRadius: BorderRadius.circular(2),
@@ -369,16 +382,16 @@ class _RulerCardState extends State<_RulerCard> {
               ),
             ),
           ),
-          SizedBox(height: 8.h),
+          const SizedBox(height: 8),
           Text(
             widget.unit,
-            style: TextStyle(
-              fontSize: 14.sp,
+            style: const TextStyle(
+              fontSize: 14,
               color: Color(0xFF8AADA9),
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 16.h),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -400,58 +413,52 @@ class _BottomButtons extends StatelessWidget {
         GestureDetector(
           onTap: onBack,
           child: Container(
-            width: 60.w,
-            height: 60.h,
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(18.r),
+              borderRadius: BorderRadius.circular(18),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.06),
-                  blurRadius: 12.r,
+                  blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.chevron_left_rounded,
               color: Color(0xFF1C1C2E),
-              size: 28.sp,
+              size: 28,
             ),
           ),
         ),
-        SizedBox(width: 16.w),
+        const SizedBox(width: 16),
         Expanded(
           child: GestureDetector(
             onTap: onNext,
             child: Container(
-              height: 60.h,
+              height: 60,
               decoration: BoxDecoration(
                 color: const Color(0xFF1C1C2E),
-                borderRadius: BorderRadius.circular(18.r),
+                borderRadius: BorderRadius.circular(18),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     'Next',
                     style: TextStyle(
-                      fontSize: 17.sp,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
                   ),
                   SizedBox(width: 8),
-                  Icon(
-                    Icons.chevron_right_rounded,
-                    color: Colors.white,
-                    size: 20.sp,
-                  ),
-                  Icon(
-                    Icons.chevron_right_rounded,
-                    color: Color(0xFF6B6B80),
-                    size: 20.sp,
-                  ),
+                  Icon(Icons.chevron_right_rounded,
+                      color: Colors.white, size: 20),
+                  Icon(Icons.chevron_right_rounded,
+                      color: Color(0xFF6B6B80), size: 20),
                 ],
               ),
             ),
