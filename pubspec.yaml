@@ -26,6 +26,7 @@ dependencies:
   pinput: ^6.0.2
   glass_nav_bar: ^0.0.5
   provider: ^6.1.5+1
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:
