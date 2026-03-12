@@ -6,6 +6,7 @@ import 'package:fitness_app/features/auth/ui/login/login_screen.dart';
 import 'package:fitness_app/features/auth/ui/login/login_sucssesfully_screen.dart';
 import 'package:fitness_app/features/auth/ui/login_or_register/login_or_register_screen.dart';
 import 'package:fitness_app/features/auth/ui/register/register_screen.dart';
+import 'package:fitness_app/features/mainlayout/articles/Logic/Data/News_Responses.dart';
 import 'package:fitness_app/features/mainlayout/articles/ui/article_deitails/articles_deitails_screen.dart';
 import 'package:fitness_app/features/mainlayout/couches/logic/providers/selected_couch_provider.dart';
 import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_deitails_screen.dart';
@@ -20,7 +21,6 @@ import 'package:fitness_app/features/onbourding/height/height_screen.dart';
 import 'package:fitness_app/features/payment/ui/payment_screen.dart';
 import 'package:fitness_app/features/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
-
 class RoutesManager {
   static const String heightScreen = '/heightScreen';
   static const String chooseAuth = '/choose';
@@ -85,7 +85,8 @@ class RoutesManager {
       case achiveScreen:
         return CupertinoPageRoute(builder: (_) => AchiveScreen());
       case articlesdetailes:
-        return CupertinoPageRoute(builder: (_)=> ArticlesDeitailsScreen());
+        final article = settings.arguments as Articles;
+        return CupertinoPageRoute(builder: (_)=> ArticlesDeitailsScreen(articles: article,));
     }
     return null;
   }
