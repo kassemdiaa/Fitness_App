@@ -1,10 +1,9 @@
 import 'package:fitness_app/core/colors_manager.dart';
+import 'package:fitness_app/core/fonts_manager.dart'; // Fixed import position
 import 'package:fitness_app/features/mainlayout/articles/Logic/Data/News_Responses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:url_launcher/url_launcher.dart'; // Import this
-
-import '../../../../../core/fonts_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ArticlesDeitailsScreen extends StatefulWidget {
   final Articles articles;
@@ -15,13 +14,16 @@ class ArticlesDeitailsScreen extends StatefulWidget {
 }
 
 class _ArticlesDeitailsScreenState extends State<ArticlesDeitailsScreen> {
-  Future<void> _launchUrl() async
-  {
-    final Uri url = Uri.parse(widget.articles.content ?? "");
+  Future<void> _launchUrl() async {
+    final String urlString = widget.articles.url ?? "";
+    if (urlString.isEmpty) return;
+    final Uri url = Uri.parse(urlString);
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Could not launch article link")),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Could not launch article link")),
+        );
+      }
     }
   }
 
@@ -44,9 +46,12 @@ class _ArticlesDeitailsScreenState extends State<ArticlesDeitailsScreen> {
                 Positioned(
                   top: 40.h,
                   left: 10.w,
-                  child: IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back_ios, color: ColorsManager.white),
+                  child: CircleAvatar(
+                    backgroundColor: ColorsManager.black.withOpacity(0.3),
+                    child: IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(Icons.arrow_back_ios_new, color: ColorsManager.white, size: 20),
+                    ),
                   ),
                 ),
               ],
@@ -68,10 +73,11 @@ class _ArticlesDeitailsScreenState extends State<ArticlesDeitailsScreen> {
                       fontSize: 16.sp,
                     ),
                   ),
-                  Divider(color: ColorsManager.lightBlue, height: 30),
+                  Divider(color: ColorsManager.lightBlue.withOpacity(0.5), height: 30.h),
                   Text(
-                    widget.articles.description ?? "",
-                    style: TextStyle(color: ColorsManager.white, fontSize: 14.sp, fontStyle: FontStyle.italic),
+                    widget.articles.description ?? "", style: FontsStyles.newsDetailes.copyWith(
+                    color: ColorsManager.white
+                  )
                   ),
                   SizedBox(height: 15.h),
                   Text(
@@ -81,17 +87,19 @@ class _ArticlesDeitailsScreenState extends State<ArticlesDeitailsScreen> {
                       height: 1.6,
                     ),
                   ),
-                  if (widget.articles.url != null)
+                  if (widget.articles.url != null && widget.articles.url!.isNotEmpty)
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       child: Center(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: ColorsManager.Lemon,
-                            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 12.h),
+                            padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 12.h),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                           ),
                           onPressed: _launchUrl,
-                          child: Text("Read Full Article",
+                          child: Text(
+                            "Read Full Article",
                             style: TextStyle(color: ColorsManager.black, fontWeight: FontWeight.bold),
                           ),
                         ),
