@@ -2,6 +2,7 @@ import 'package:fitness_app/core/RoutesManager.dart';
 import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/BackWorkout.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Bisceps.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Chest.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Legs.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/tranning_Choises/trainng_choices.dart';
@@ -55,7 +56,7 @@ class _WorkoutDeitailsScreenState extends State<WorkoutDeitailsScreen> {
               Padding(
                 padding:  REdgeInsets.all(18.0),
                 child: TrainngChoices(ontap: (){
-                  // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Biceps Workouts',)));
+                  Navigator.push(context,CupertinoPageRoute(builder: (_)=> BiscepsWorkout(appbar:'Biceps Workouts',)));
                 }, item: " Biceps Workouts", time: '00:00',),
               ),
               Padding(
@@ -69,6 +70,12 @@ class _WorkoutDeitailsScreenState extends State<WorkoutDeitailsScreen> {
                 child: TrainngChoices(ontap: (){
                   // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Triceps Workouts',)));
                 }, item: " Shoulder Workouts", time: '00:00',),
+              ),
+              Padding(
+                padding:  REdgeInsets.all(18.0),
+                child: TrainngChoices(ontap: (){
+                  // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Triceps Workouts',)));
+                }, item: " Forearm Workouts", time: '00:00',),
               ),
             ],
           ),

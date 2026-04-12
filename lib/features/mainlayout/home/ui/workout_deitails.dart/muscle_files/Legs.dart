@@ -33,7 +33,7 @@ class _LegsWorkoutState extends State<LegsWorkout> {
         centerTitle: true,
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: videoUrls.length,
         itemBuilder: (context, index) {
           final videoID = YoutubePlayer.convertUrlToId(videoUrls[index]);
@@ -43,7 +43,7 @@ class _LegsWorkoutState extends State<LegsWorkout> {
               },
               child:
               Image.network(YoutubePlayer.getThumbnail(videoId: videoID!)));
-        },
+        }, separatorBuilder: (BuildContext context, int index)=> SizedBox(height: 10.h,),
       ),
     );
   }
