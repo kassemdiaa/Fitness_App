@@ -18,23 +18,14 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: Container(
-          width: 44.w,
-          height: 44.h,
-          child: IconButton(onPressed: (){
-            Navigator.pop(context);
-          }, icon: Container(
-            width: 44.w,
-            height: 44.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(topLeft:Radius.circular(13.r),topRight: Radius.circular(13.r),bottomLeft: Radius.circular(13.r),bottomRight: Radius.circular(13.r)),
-              border: Border.all(color: ColorsManager.white,width:1.w,strokeAlign: BorderSide.strokeAlignInside)
-            ),
-            child: Icon(CupertinoIcons.arrow_left,color: ColorsManager.white,
-              weight: 7.w,
-            ),
-          )),
-        ),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Padding(
+          padding:  REdgeInsets.all(8.0),
+          child: Icon(CupertinoIcons.arrow_left,color: ColorsManager.white,
+            weight: 20.w,
+          ),
+        )),
       ),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Registeritemsui(),

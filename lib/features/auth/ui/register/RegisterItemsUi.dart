@@ -58,13 +58,13 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
       );
       return;
     }
-    context.read<AuthCubit>().SignUP(
-      emailController.text.trim(),
+    context.read<AuthCubit>().SignUP(emailController.text.trim(),
       passwordController.text.trim(),
     );
   }
   @override
-  void dispose() {
+  void dispose()
+  {
     emailController.dispose();
     nameController.dispose();
     passwordController.dispose();
@@ -79,21 +79,19 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
         child: Column(
           children: [
             Padding(
-              padding: REdgeInsets.all(22.0),
-              child: Image.asset('assets/images/logo.png', width: 50.w),
+              padding: REdgeInsets.all(2.0),
+              child: Image.asset('assets/images/logo.png', width: 90.w),
             ),
             SizedBox(height: 12.h),
             Padding(
-              padding: REdgeInsets.all(22.0),
-              child: Text(
-                "Create your account",
-                style: FontsStyles.welcomeAuthtext.copyWith(
+              padding: REdgeInsets.all(23.0),
+              child: Text("Create your account", style: FontsStyles.welcomeAuthtext.copyWith(
                   color: ColorsManager.white.withOpacity(0.7),
                 ),
                 maxLines: 2,
               ),
             ),
-            SizedBox(height: 23.h),
+            SizedBox(height: 13.h),
             Padding(
               padding: REdgeInsets.all(15.0),
               child: Custometextforemfield(
@@ -132,7 +130,7 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
                 controller: confirmController,
               ),
             ),
-            SizedBox(height: 30.h),
+            SizedBox(height: 20.h),
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 22.w),
               child: BlocConsumer<AuthCubit, AuthState>(
@@ -149,8 +147,7 @@ class _RegisteritemsuiState extends State<Registeritemsui> {
                 },
                 listener: (context, state) {
                   if (state is Authenticated) {
-                    Navigator.pushReplacementNamed(context,
-                      RoutesManager.loginScreen,
+                    Navigator.pushReplacementNamed(context, RoutesManager.loginScreen,
                     );
                   }
                   if (state is UnAuthenticated) {

@@ -42,7 +42,7 @@ class Articlesslider extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.transparent, ColorsManager.yellow.withOpacity(0.7)],
+                colors: [Colors.transparent, ColorsManager.grey.withOpacity(0.7)],
               ),
             ),
           ),

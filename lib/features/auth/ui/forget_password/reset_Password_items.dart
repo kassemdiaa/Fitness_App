@@ -4,11 +4,13 @@ import 'package:fitness_app/core/colors_manager.dart';
 import 'package:fitness_app/core/fonts_manager.dart';
 import 'package:fitness_app/core/SharedWidgets/CustomeTextButton.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResetPasswordItems extends StatelessWidget {
-  const ResetPasswordItems({super.key});
-
+   ResetPasswordItems({super.key});
+  TextEditingController NewPass=TextEditingController();
+  TextEditingController ConfirmNewPass=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,18 +38,27 @@ class ResetPasswordItems extends StatelessWidget {
               Custometextforemfield(
                 hint: "New Password",
                 label: "New Password",
+                controller: NewPass,
                 color: ColorsManager.white.withOpacity(0.8),
               ),
               SizedBox(height: 10.h),
               Custometextforemfield(
                 hint: "Confirm Password",
                 label: "Confirm Password",
+                controller: ConfirmNewPass,
                 color: ColorsManager.white.withOpacity(0.8),
               ),
               SizedBox(height: 10.h),
               CustomElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, RoutesManager.passwordChanged);
+                  String pass = NewPass.text;
+                  String confirm = ConfirmNewPass.text;
+                  if (pass.isEmpty || confirm.isEmpty) {
+                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Fill all fields")));
+                  }
+                  if (pass != confirm) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Fill all fields")));
+                  }
                 },
                 title: "Reset Password",
                 backgroundColor: ColorsManager.white,

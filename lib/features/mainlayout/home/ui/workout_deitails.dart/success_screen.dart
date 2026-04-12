@@ -21,7 +21,6 @@ class SuccessScreen extends StatelessWidget {
               alignment: AlignmentGeometry.center,
               children: [
                 LottieBuilder.asset(LottieManager.fireWork, width: 400.w),
-        
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 50.h),
                   decoration: BoxDecoration(

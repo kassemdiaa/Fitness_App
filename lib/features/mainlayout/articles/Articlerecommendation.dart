@@ -26,10 +26,10 @@ class _ArticlerecommendationState extends State<Articlerecommendation> {
         ),
       ),
       title: Text(widget.item.title ?? "", maxLines: 2,
-        style: const TextStyle(color: ColorsManager.white, fontWeight: FontWeight.bold),
+        style: TextStyle(color: ColorsManager.white, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(widget.item.source?.name ?? "",
-        style: const TextStyle(color: ColorsManager.Lemon),
+        style: TextStyle(color: ColorsManager.Lemon),
       ),
       onTap: () {
         Navigator.pushNamed(context, RoutesManager.articlesdetailes, arguments: widget.item,);

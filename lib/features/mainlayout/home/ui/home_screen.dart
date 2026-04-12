@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/RoutesManager.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -15,14 +17,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsManager.Purple,
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16.w),
+        padding:  REdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
             SizedBox(height: 70.h),
             Row(
               children: [
-                Text(
-                  'Welcome, ${context.read<UserCradintialsProvider>().userName} !',
+                Text('Welcome, ${context.read<UserCradintialsProvider>().userName} !',
                   style: GoogleFonts.montserrat(
                     color: ColorsManager.white,
                     fontSize: 20.sp,
@@ -33,28 +34,19 @@ class HomeScreen extends StatelessWidget {
                 SvgPicture.asset('assets/svgs/notification.svg', width: 22.w),
               ],
             ),
-            SizedBox(height: 8.h,),
-            Row(
-              children: [
-                Text(
-                  'Monday, 21 August 2020',
-                  style: GoogleFonts.montserrat(
-                    color: ColorsManager.grey,
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 50.h),
             WorkoutItem(
               imagePath: 'assets/images/TrainingforBeginner.png',
-              ontap: () {},
+              ontap: () {
+                Navigator.pushNamed(context, RoutesManager.workoutdetailes);
+              },
             ),
             SizedBox(height: 30.h),
             WorkoutItem(
               imagePath: 'assets/images/BuildYourBoddy.png',
-              ontap: () {},
+              ontap: () {
+                Navigator.pushNamed(context, RoutesManager.workoutdetailes);
+              },
             ),
           ],
         ),

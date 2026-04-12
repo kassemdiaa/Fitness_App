@@ -7,7 +7,6 @@ part 'news_state.dart';
 class NewsCubit extends Cubit<NewsState> {
   final Userrepo repo;
   NewsCubit({required this.repo}) : super(NewsInitial());
-
   Future<void> getNews() async {
     emit(NewsLoading());
     try {

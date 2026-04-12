@@ -14,6 +14,7 @@ import 'package:fitness_app/features/mainlayout/couches/ui/screens/couch_transfo
 import 'package:fitness_app/features/mainlayout/couches/ui/screens/couches_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/home_screen.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/success_screen.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/workout_deitails_screen.dart';
 import 'package:fitness_app/features/mainlayout/mainlayout.dart';
 import 'package:fitness_app/features/mainlayout/profile/ui/profile_screen.dart';
 import 'package:fitness_app/features/onbourding/achive/achive_screen.dart';
@@ -44,6 +45,8 @@ class RoutesManager {
     static const String couchTranformationsScreen = '/couchTranformationsScreen';
     static const String achiveScreen = '/achiveScreen';
     static const String articlesdetailes = '/articlesDetailes';
+    static const String workoutdetailes = '/workoutDetailes';
+    static const String practiseitem = '/practiseitem';
   static Route<dynamic>? getRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
@@ -87,7 +90,9 @@ class RoutesManager {
       case articlesdetailes:
         final article = settings.arguments as Articles;
         return CupertinoPageRoute(builder: (_)=> ArticlesDeitailsScreen(articles: article,));
-    }
+      case workoutdetailes:
+        return CupertinoPageRoute(builder: (_) => WorkoutDeitailsScreen());
+      }
     return null;
   }
 }

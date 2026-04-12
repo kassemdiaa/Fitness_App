@@ -12,8 +12,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> SignUP(String email, String password) async {
     emit(AuthLoading());
     try {
-      UserCredential userCredential = await _auth
-          .createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       String? token = await userCredential.user?.getIdToken();
       emit(Authenticated(token: token));
     } on FirebaseAuthException catch (e) {
@@ -30,13 +29,11 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       password: password,
     );
-
     String? token = await userCredential.user?.getIdToken();
     if (token == null) {
       emit(UnAuthenticated( Message: 'Failed to get token'));
       return null;
     }
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
     emit(Authenticated(token: token));
