@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class PLayerScreen extends StatefulWidget {
   const PLayerScreen({super.key, required this.videoId});
-
   final String videoId;
-
   @override
   State<PLayerScreen> createState() => _PLayerScreenState();
 }
@@ -30,7 +28,9 @@ class _PLayerScreenState extends State<PLayerScreen> {
           centerTitle: true,
           backgroundColor: ColorsManager.lightPurple,
           title: Text("Player")),
-      body: YoutubePlayer(controller: _controller),
+      body: SizedBox(
+          height: double.infinity,
+          child: YoutubePlayer(controller: _controller)),
     );
   }
 }
