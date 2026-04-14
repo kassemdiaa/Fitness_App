@@ -5,6 +5,9 @@ import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/mu
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Bisceps.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Chest.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/Legs.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/forarm.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/shoulder.dart';
+import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/muscle_files/triceps.dart';
 import 'package:fitness_app/features/mainlayout/home/ui/workout_deitails.dart/tranning_Choises/trainng_choices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,19 +65,19 @@ class _WorkoutDeitailsScreenState extends State<WorkoutDeitailsScreen> {
               Padding(
                 padding:  REdgeInsets.all(18.0),
                 child: TrainngChoices(ontap: (){
-                  // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Triceps Workouts',)));
+                  Navigator.push(context,CupertinoPageRoute(builder: (_)=> TricepsWorkout(appbar:'Triceps Workouts',)));
                 }, item: " Triceps Workouts", time: '00:00',),
               ),
               Padding(
                 padding:  REdgeInsets.all(18.0),
                 child: TrainngChoices(ontap: (){
-                  // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Triceps Workouts',)));
+                  Navigator.push(context,CupertinoPageRoute(builder: (_)=> ShoulderWorkout(appbar:'Shoulder Workouts',)));
                 }, item: " Shoulder Workouts", time: '00:00',),
               ),
               Padding(
                 padding:  REdgeInsets.all(18.0),
                 child: TrainngChoices(ontap: (){
-                  // Navigator.push(context,CupertinoPageRoute(builder: (_)=> PracticeItem(target_muscle:'Triceps Workouts',)));
+                  Navigator.push(context,CupertinoPageRoute(builder: (_)=> ForarmWorkout(appbar:'Forearm Workouts',)));
                 }, item: " Forearm Workouts", time: '00:00',),
               ),
             ],
